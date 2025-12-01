@@ -2,10 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/laravel-welcome', function () {
+    return view('welcome');
+});
 
 Route::get('/', function () {
-    return "<h1>Main Page config</h1>";
+    return view('landing');
+});
+
+Route::get('/about', function () {
+    return view('about');
 });

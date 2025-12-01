@@ -27,6 +27,21 @@
         <h1>Greetings!</h1>
         <p>This is the landing page.</p>
         <a href="/about">Go to About →</a>
+        <form method="POST" action="/choose-that-pokemon" >
+            @csrf
+            <input type="hidden" name="pokemon" value="charizard" />
+            <button type="submit">Choose</button>
+        </form>
+        <form method="POST" action="/choose-that-pokemon" >
+            @csrf
+            <input type="hidden" name="pokemon" value="squirtle" />
+            <button type="submit">Choose</button>
+        </form>
+        <form method="POST" action="/choose-that-pokemon" >
+            @csrf
+            <input type="hidden" name="pokemon" value="bulbasaur" />
+            <button type="submit">Choose</button>
+        </form>
     </div>
 </body>
 </html>

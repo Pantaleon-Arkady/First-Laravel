@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GeneralController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/laravel-welcome', function () {
@@ -13,3 +14,5 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('about');
 });
+
+Route::post('/choose-that-pokemon', [GeneralController::class, 'choosePokemon']);

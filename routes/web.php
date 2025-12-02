@@ -8,7 +8,7 @@ Route::get('/laravel-welcome', function () {
 });
 
 Route::get('/', function () {
-    return view('landing');
+    return view('initial');
 });
 
 Route::get('/about', function () {

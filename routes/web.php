@@ -16,3 +16,7 @@ Route::get('/about', function () {
 });
 
 Route::post('/choose-that-pokemon', [GeneralController::class, 'choosePokemon']);
+
+Route::get('/register', function () {
+    return view('register');
+});

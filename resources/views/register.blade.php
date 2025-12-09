@@ -54,14 +54,14 @@
             @endif
         </div>
         <div class="bg-light w-50 m-3 rounded d-flex justify-content-center align-items-center p-4">
-            @if (request()->query('register') === 'register')
-                @include('partials.form-register')
-            @elseif (request()->query('register') === 'login')
-                @include('partials.form-login')
-            @elseif (request()->query('register') === 'pin')
-                @include('partials.form-pin')
+            @if (request()->get('register') === 'register')
+                <x-auth.register-form />
+            @elseif (request()->get('register') === 'login')
+                <x-auth.login-form />
+            @elseif (request()->get('register') === 'pin')
+                <x-auth.pin-form />
             @else
-                @include('partials.form-default')
+                <x-auth.welcome-message />
             @endif
         </div>
     </div>

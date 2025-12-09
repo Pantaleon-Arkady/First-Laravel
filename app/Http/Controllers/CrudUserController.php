@@ -10,15 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 class CrudUserController extends Controller
 {
-
-    public static function guard()
-    {
-        /** @var \Illuminate\Contracts\Auth\StatefulGuard $guard */
-        $guard = auth()->guard();   // or just auth('web')
-        
-        return $guard;
-    }
-
     public function userRegister(Request $request)
     {
         $dataValidated = $request->validate([
@@ -59,9 +50,13 @@ class CrudUserController extends Controller
         ])->onlyInput('logName');
     }
 
-    public function userLogout()
+    public function userLogout(Request $request)
     {
-        $this->guard()->logout();
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
         return redirect('/');
     }
 }

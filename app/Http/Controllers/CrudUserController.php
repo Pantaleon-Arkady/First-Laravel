@@ -40,21 +40,21 @@ class CrudUserController extends Controller
 
     public function userLogin(Request $request)
     {
-        $dataPosted = $request->validate([
-            'logName' => 'required',
+        $credentails = $request->validate([
+            'logName' => ['required', 'string'], 
             'logPassword' => 'required'
         ]);
 
-
-        $dataVerified = $this->guard()->attempt([
-            'name' => $dataPosted['logName'],
-            'password' => $dataPosted['logPassword']
-        ]);
-
-        if ($dataVerified) {
+        if (Auth::attempt([
+            'name' => $credentails['logName'], 
+            'password' => $credentails['logPassword']
+        ])) {
             $request->session()->regenerate();
+
+            return redirect('/');
         }
-        return redirect('/');
+
+        return back();
     }
 
     public function userLogout()

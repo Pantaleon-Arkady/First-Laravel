@@ -10,9 +10,9 @@
 
     @auth
         <h3>CRUD Home page</h3>
-        <a class="btn btn-danger" href="/logout">Log out</a>
+        <a class="btn btn-danger" href="/user-logout">Log out</a>
     @else
-        <div>
+        <div class="border rounded px-4 py-2">
             <h3>Register</h3>
             <form action="/user-register" method="POST" >
                 @csrf
@@ -20,6 +20,15 @@
                 <input type="email" name="email" placeholder="Please enter your email..." />
                 <input type="password" name="password" placeholder="Create a password..." />
                 <button type="submit">Register</button>
+            </form>
+        </div>
+        <div class="border rounded px-4 py-2">
+            <h3>Log In</h3>
+            <form action="/user-login" method="POST" >
+                @csrf
+                <input type="text" name="logName" placeholder="Username..." />
+                <input type="password" name="logPassword" placeholder="Password..." />
+                <button type="submit">Log In</button>
             </form>
         </div>
     @endauth

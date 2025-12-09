@@ -27,3 +27,4 @@ Route::get('/', function () {
 });
 
 Route::post('/user-register', [CrudUserController::class, 'userRegister']);
+Route::get('/user-logout', [CrudUserController::class, 'userLogout']);

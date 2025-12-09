@@ -27,4 +27,12 @@ class CrudUserController extends Controller
 
         return redirect('/');
     }
+
+    public function userLogout()
+    {
+        /** @var \Illuminate\Contracts\Auth\StatefulGuard $guard */
+        $guard = auth()->guard();
+        $guard->logout();
+        return redirect('/');
+    }
 }

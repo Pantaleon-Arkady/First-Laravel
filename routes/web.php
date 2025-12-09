@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CrudUserController;
 use App\Http\Controllers\GeneralController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,4 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::post('/user-register', function () {
-    return 'registered';
-});
+Route::post('/user-register', [CrudUserController::class, 'userRegister']);

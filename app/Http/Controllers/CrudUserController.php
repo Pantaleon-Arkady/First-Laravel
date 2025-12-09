@@ -8,6 +8,15 @@ use Illuminate\Validation\Rule;
 
 class CrudUserController extends Controller
 {
+
+    public static function guard()
+    {
+        /** @var \Illuminate\Contracts\Auth\StatefulGuard $guard */
+        $guard = auth()->guard();   // or just auth('web')
+        
+        return $guard;
+    }
+
     public function userRegister(Request $request)
     {
         $dataPosted = $request->validate([
@@ -20,19 +29,38 @@ class CrudUserController extends Controller
 
         $user = User::create($dataPosted);
 
-        /** @var \Illuminate\Contracts\Auth\StatefulGuard $guard */
-        $guard = auth()->guard();   // or just auth('web')
+        // /** @var \Illuminate\Contracts\Auth\StatefulGuard $guard */
+        // $guard = auth()->guard();   // or just auth('web')
 
-        $guard->login($user);
+        // $guard->login($user);
+
+        $this->guard()->login($user);
 
         return redirect('/');
     }
 
+    public function userLogin(Request $request)
+    {
+        // $dataPosted = $request->validate([
+        //     'name' => 'required',
+        //     'password' => 'required'
+        // ]);
+
+
+
+        // $dataVerified = auth()->attempt([
+        //     'name' => $dataPosted['name'],
+        //     'password' => $dataPosted['password']
+        // ]);
+
+        // if ($dataVerified) {
+
+        // }
+    }
+
     public function userLogout()
     {
-        /** @var \Illuminate\Contracts\Auth\StatefulGuard $guard */
-        $guard = auth()->guard();
-        $guard->logout();
+        $this->guard()->logout();
         return redirect('/');
     }
 }

@@ -7,7 +7,7 @@ Route::get('/laravel-welcome', function () {
     return view('welcome');
 });
 
-Route::get('/', function () {
+Route::get('/initial', function () {
     return view('initial');
 });
 
@@ -19,4 +19,12 @@ Route::post('/choose-that-pokemon', [GeneralController::class, 'choosePokemon'])
 
 Route::get('/register', function () {
     return view('register');
+});
+
+Route::get('/', function () {
+    return view('home');
+});
+
+Route::post('/user-register', function () {
+    return 'registered';
 });

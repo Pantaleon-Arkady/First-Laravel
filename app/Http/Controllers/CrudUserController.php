@@ -29,11 +29,6 @@ class CrudUserController extends Controller
 
         $user = User::create($dataPosted);
 
-        // /** @var \Illuminate\Contracts\Auth\StatefulGuard $guard */
-        // $guard = auth()->guard();   // or just auth('web')
-
-        // $guard->login($user);
-
         $this->guard()->login($user);
 
         return redirect('/');
@@ -41,21 +36,21 @@ class CrudUserController extends Controller
 
     public function userLogin(Request $request)
     {
-        // $dataPosted = $request->validate([
-        //     'name' => 'required',
-        //     'password' => 'required'
-        // ]);
+        $dataPosted = $request->validate([
+            'logName' => 'required',
+            'logPassword' => 'required'
+        ]);
 
 
+        $dataVerified = $this->guard()->attempt([
+            'name' => $dataPosted['logName'],
+            'password' => $dataPosted['logPassword']
+        ]);
 
-        // $dataVerified = auth()->attempt([
-        //     'name' => $dataPosted['name'],
-        //     'password' => $dataPosted['password']
-        // ]);
-
-        // if ($dataVerified) {
-
-        // }
+        if ($dataVerified) {
+            $request->session()->regenerate();
+        }
+        return redirect('/');
     }
 
     public function userLogout()

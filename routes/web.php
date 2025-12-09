@@ -26,5 +26,8 @@ Route::get('/', function () {
     return view('home');
 });
 
+// Quick CRUD Users
+
 Route::post('/user-register', [CrudUserController::class, 'userRegister']);
+Route::post('/user-login', [CrudUserController::class, 'userLogin']);
 Route::get('/user-logout', [CrudUserController::class, 'userLogout']);

@@ -26,10 +26,13 @@
             <h3>Log In</h3>
             <form action="/user-login" method="POST" >
                 @csrf
-                <input type="text" name="logName" placeholder="Username..." />
+                <input type="text" name="logName" value="{{ old('logName') }}" placeholder="Username...">
                 <input type="password" name="logPassword" placeholder="Password..." />
                 <button type="submit">Log In</button>
             </form>
+            @if ($errors->has('logName'))
+                <div class="text-danger">{{ $errors->first('logName') }}</div>
+            @endif
         </div>
     @endauth
 

@@ -54,7 +54,9 @@ class CrudUserController extends Controller
             return redirect('/');
         }
 
-        return back();
+        return back()->withErrors([
+            'logName' => 'Data input are incorrect.',
+        ])->onlyInput('logName');
     }
 
     public function userLogout()

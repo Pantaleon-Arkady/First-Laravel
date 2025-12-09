@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\Auth;
 
 class CrudUserController extends Controller
 {
@@ -19,17 +21,19 @@ class CrudUserController extends Controller
 
     public function userRegister(Request $request)
     {
-        $dataPosted = $request->validate([
+        $dataValidated = $request->validate([
             'name' => ['required', 'min:3', 'max:12', Rule::unique('users', 'name')],
             'email' => ['required', Rule::unique('users', 'email')],
-            'password' => ['required', 'min:8', 'max:50']
+            'password' => ['required', Password::defaults()]
         ]);
 
-        $dataPosted['password'] = bcrypt($dataPosted['password']);
+        $user = User::create([
+            'name' => $dataValidated['name'],
+            'email' => $dataValidated['email'],
+            'password' => bcrypt($dataValidated['password']),
+        ]);
 
-        $user = User::create($dataPosted);
-
-        $this->guard()->login($user);
+        Auth::login($user);
 
         return redirect('/');
     }

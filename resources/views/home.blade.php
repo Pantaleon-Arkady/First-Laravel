@@ -31,41 +31,41 @@
         </div>
 
         <!-- Register Form -->
-        <div class="border border-gray-300 rounded-md p-5 w-full max-w-sm mb-6" id="registerForm">
+        <div class="form-div" id="registerForm">
             <h3 class="text-xl font-semibold mb-3">Register</h3>
             <form action="/user-register" method="POST" class="space-y-3">
                 @csrf
                 <input type="text" name="name" placeholder="Enter a username..."
-                       class="w-full border border-gray-400 rounded px-3 py-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-300"/>
+                       class="input-field"/>
 
                 <input type="email" name="email" placeholder="Please enter your email..."
-                       class="w-full border border-gray-400 rounded px-3 py-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-300"/>
+                       class="input-field"/>
 
                 <input type="password" name="password" placeholder="Create a password..."
-                       class="w-full border border-gray-400 rounded px-3 py-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-300"/>
+                       class="input-field"/>
 
                 <button type="submit"
-                        class="w-full py-2 bg-gray-800 text-white rounded hover:bg-gray-700 transition">
+                        class="btn-secondary">
                     Register
                 </button>
             </form>
         </div>
 
         <!-- Login Form -->
-        <div class="border border-gray-300 rounded-md p-5 w-full max-w-sm" id="loginForm">
+        <div class="form-div" id="loginForm">
             <h3 class="text-xl font-semibold mb-3">Log In</h3>
 
             <form action="/user-login" method="POST" class="space-y-3">
                 @csrf
 
                 <input type="text" name="logName" value="{{ old('logName') }}" placeholder="Username..."
-                       class="w-full border border-gray-400 rounded px-3 py-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-300"/>
+                       class="input-field"/>
 
                 <input type="password" name="logPassword" placeholder="Password..."
-                       class="w-full border border-gray-400 rounded px-3 py-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-300"/>
+                       class="input-field"/>
 
                 <button type="submit"
-                        class="w-full py-2 bg-gray-800 text-white rounded hover:bg-gray-700 transition">
+                        class="btn-secondary">
                     Log In
                 </button>
             </form>

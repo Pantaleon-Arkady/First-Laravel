@@ -3,8 +3,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/statics/bootstrap.min.css">
     <title>CRUD Home</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
 
@@ -12,7 +12,11 @@
         <h3>CRUD Home page</h3>
         <a class="btn btn-danger" href="/user-logout">Log out</a>
     @else
-        <div class="border rounded px-4 py-2">
+        <div class="border">
+            <button onclick="showRegister()">Register</button>
+            <button onclick="showLogin()">Log in</button>
+        </div>
+        <div class="border rounded px-4 py-2" id="registerForm">
             <h3>Register</h3>
             <form action="/user-register" method="POST" >
                 @csrf
@@ -22,7 +26,7 @@
                 <button type="submit">Register</button>
             </form>
         </div>
-        <div class="border rounded px-4 py-2">
+        <div class="border rounded px-4 py-2" id="loginForm">
             <h3>Log In</h3>
             <form action="/user-login" method="POST" >
                 @csrf

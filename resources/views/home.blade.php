@@ -6,38 +6,75 @@
     <title>CRUD Home</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-100 text-gray-900 min-h-screen flex items-center justify-center">
 
     @auth
-        <h3>CRUD Home page</h3>
-        <a class="btn btn-danger" href="/user-logout">Log out</a>
+        <div class="text-center space-y-4">
+            <h3 class="text-2xl font-semibold">CRUD Home page</h3>
+            <a href="/user-logout"
+               class="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700 transition">
+                Log out
+            </a>
+        </div>
     @else
-        <div class="border">
-            <button onclick="showRegister()">Register</button>
-            <button onclick="showLogin()">Log in</button>
+
+        <!-- Toggle Buttons -->
+        <div class="border border-gray-400 p-4 rounded-md flex gap-4 justify-center mb-6">
+            <button onclick="showRegister()"
+                class="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700 transition">
+                Register
+            </button>
+            <button onclick="showLogin()"
+                class="px-4 py-2 bg-gray-300 text-gray-900 rounded hover:bg-gray-400 transition">
+                Log in
+            </button>
         </div>
-        <div class="border rounded px-4 py-2" id="registerForm">
-            <h3>Register</h3>
-            <form action="/user-register" method="POST" >
+
+        <!-- Register Form -->
+        <div class="border border-gray-300 rounded-md p-5 w-full max-w-sm mb-6" id="registerForm">
+            <h3 class="text-xl font-semibold mb-3">Register</h3>
+            <form action="/user-register" method="POST" class="space-y-3">
                 @csrf
-                <input type="text" name="name" placeholder="Enter a username..." />
-                <input type="email" name="email" placeholder="Please enter your email..." />
-                <input type="password" name="password" placeholder="Create a password..." />
-                <button type="submit">Register</button>
+                <input type="text" name="name" placeholder="Enter a username..."
+                       class="w-full border border-gray-400 rounded px-3 py-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-300"/>
+
+                <input type="email" name="email" placeholder="Please enter your email..."
+                       class="w-full border border-gray-400 rounded px-3 py-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-300"/>
+
+                <input type="password" name="password" placeholder="Create a password..."
+                       class="w-full border border-gray-400 rounded px-3 py-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-300"/>
+
+                <button type="submit"
+                        class="w-full py-2 bg-gray-800 text-white rounded hover:bg-gray-700 transition">
+                    Register
+                </button>
             </form>
         </div>
-        <div class="border rounded px-4 py-2" id="loginForm">
-            <h3>Log In</h3>
-            <form action="/user-login" method="POST" >
+
+        <!-- Login Form -->
+        <div class="border border-gray-300 rounded-md p-5 w-full max-w-sm" id="loginForm">
+            <h3 class="text-xl font-semibold mb-3">Log In</h3>
+
+            <form action="/user-login" method="POST" class="space-y-3">
                 @csrf
-                <input type="text" name="logName" value="{{ old('logName') }}" placeholder="Username...">
-                <input type="password" name="logPassword" placeholder="Password..." />
-                <button type="submit">Log In</button>
+
+                <input type="text" name="logName" value="{{ old('logName') }}" placeholder="Username..."
+                       class="w-full border border-gray-400 rounded px-3 py-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-300"/>
+
+                <input type="password" name="logPassword" placeholder="Password..."
+                       class="w-full border border-gray-400 rounded px-3 py-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-300"/>
+
+                <button type="submit"
+                        class="w-full py-2 bg-gray-800 text-white rounded hover:bg-gray-700 transition">
+                    Log In
+                </button>
             </form>
+
             @if ($errors->has('logName'))
-                <div class="text-danger">{{ $errors->first('logName') }}</div>
+                <div class="mt-2 text-sm text-red-500">{{ $errors->first('logName') }}</div>
             @endif
         </div>
+
     @endauth
 
 </body>

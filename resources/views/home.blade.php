@@ -6,7 +6,7 @@
     <title>CRUD Home</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body>
+<body class="bg-gray-100">
 
     @auth
         <h3>CRUD Home page</h3>

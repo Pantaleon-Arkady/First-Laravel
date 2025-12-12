@@ -17,4 +17,11 @@ class GeneralController extends Controller
             echo 'request method not allowed';
         }
     }
+
+    public static function fastPrint($data)
+    {
+        echo '<pre>';
+        print_r($data);
+        echo '</pre>';
+    }
 }

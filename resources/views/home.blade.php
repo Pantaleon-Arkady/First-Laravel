@@ -28,6 +28,24 @@
                     </button>
                 </form>
             </div>
+            <div class="form-div" id="postForm">
+                <h3 class="text-2xl font-semibold">All Posts</h3>
+                @foreach ($allPosts as $post)
+                    <div class="border border-gray-200 p-4">
+                        <h4>{{$post['title']}}</h4>
+                        <p>{{$post['content']}}</p>
+                    </div>
+                @endforeach
+            </div>
+            <div class="form-div" id="postForm">
+                <h3 class="text-2xl font-semibold">Users Posts</h3>
+                @foreach ($userPosts as $post)
+                    <div class="border border-gray-200 p-4">
+                        <h4>{{$post['title']}}</h4>
+                        <p>{{$post['content']}}</p>
+                    </div>
+                @endforeach
+            </div>
             <a href="/user-logout"
                class="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700 transition">
                 Log out

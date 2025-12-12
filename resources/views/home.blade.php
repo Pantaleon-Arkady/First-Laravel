@@ -28,7 +28,11 @@
                     </button>
                 </form>
             </div>
-            <div class="form-div" id="postForm">
+            <div>
+                <button class="posts-btn" onclick="showAllPosts()">All Posts</button>
+                <button class="posts-btn" onclick="showMyPosts()">My Posts</button>
+            </div>
+            <div class="form-div" id="allPosts">
                 <h3 class="text-2xl font-semibold">All Posts</h3>
                 @foreach ($allPosts as $post)
                     <div class="border border-gray-400 p-4 mt-3">
@@ -37,7 +41,7 @@
                     </div>
                 @endforeach
             </div>
-            <div class="form-div" id="postForm">
+            <div class="form-div" id="userPosts">
                 <h3 class="text-2xl font-semibold">User Posts</h3>
                 @foreach ($userPosts as $post)
                     <div class="border border-gray-400 p-4 mt-3">

@@ -18,4 +18,22 @@ document.addEventListener('DOMContentLoaded', () => {
         registerForm.style.display = 'none';
         loginForm.style.display = 'block';
     };
+
+    //Posts display
+
+    const allPosts = document.getElementById('allPosts');
+    const userPosts = document.getElementById('userPosts');
+
+    if (userPosts) userPosts.style.display = 'none';
+    if (allPosts) allPosts.style.display = 'block';
+
+    window.showAllPosts = () => {
+        allPosts.style.display = 'block';
+        userPosts.style.display = 'none';
+    }
+
+    window.showMyPosts = () => {
+        allPosts.style.display = 'none';
+        userPosts.style.display = 'block';
+    }
 });

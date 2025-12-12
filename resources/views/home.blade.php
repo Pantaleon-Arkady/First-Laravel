@@ -31,18 +31,18 @@
             <div class="form-div" id="postForm">
                 <h3 class="text-2xl font-semibold">All Posts</h3>
                 @foreach ($allPosts as $post)
-                    <div class="border border-gray-200 p-4">
-                        <h4>{{$post['title']}}</h4>
-                        <p>{{$post['content']}}</p>
+                    <div class="border border-gray-400 p-4 mt-3">
+                        <h4 class="text-l font-semibold mb-2">{{$post['title']}}</h4>
+                        <p>~ {{$post['content']}}</p>
                     </div>
                 @endforeach
             </div>
             <div class="form-div" id="postForm">
-                <h3 class="text-2xl font-semibold">Users Posts</h3>
+                <h3 class="text-2xl font-semibold">User Posts</h3>
                 @foreach ($userPosts as $post)
-                    <div class="border border-gray-200 p-4">
-                        <h4>{{$post['title']}}</h4>
-                        <p>{{$post['content']}}</p>
+                    <div class="border border-gray-400 p-4 mt-3">
+                        <h4 class="text-l font-semibold mb-2">{{$post['title']}}</h4>
+                        <p>~ {{$post['content']}}</p>
                     </div>
                 @endforeach
             </div>

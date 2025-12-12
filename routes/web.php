@@ -26,8 +26,17 @@ Route::get('/register', function () {
 });
 
 Route::get('/', function () {
+
     $allPosts = Post::all();
-    $userPosts = Post::where('user_id', Auth::id())->get();
+    $userPosts = [];
+
+    if (Auth::check()) {
+        /* To be fixed */
+        // $userPosts = Auth::user()->userPosts()->latest()->get();
+        // VSCode reading capability is limited, 
+        $userPosts = Post::where('user_id', Auth::id())->get();
+    }
+
     return view('home', ['allPosts' => $allPosts, 'userPosts' => $userPosts]);
 });
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\GeneralController;
+use App\Models\Post;
 
 class PostController extends Controller
 {
@@ -19,6 +20,12 @@ class PostController extends Controller
         $dataInput['content'] = strip_tags($dataInput['content']);
         $dataInput['user_id'] = Auth::id();
 
-        GeneralController::fastPrint($dataInput);
+        Post::create([
+            'title' => $dataInput['title'],
+            'content' => $dataInput['content'],
+            'user_id' => $dataInput['user_id']
+        ]);
+
+        return redirect('/');
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CrudUserController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\GeneralController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,3 +32,7 @@ Route::get('/', function () {
 Route::post('/user-register', [CrudUserController::class, 'userRegister']);
 Route::post('/user-login', [CrudUserController::class, 'userLogin']);
 Route::get('/user-logout', [CrudUserController::class, 'userLogout']);
+
+// Quick CRUD Posts
+
+Route::post('/create-post', [PostController::class, 'createPost']);

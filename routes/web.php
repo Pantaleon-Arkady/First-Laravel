@@ -4,6 +4,8 @@ use App\Http\Controllers\CrudUserController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\GeneralController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/laravel-welcome', function () {
     return view('welcome');
@@ -24,7 +26,9 @@ Route::get('/register', function () {
 });
 
 Route::get('/', function () {
-    return view('home');
+    $allPosts = Post::all();
+    $userPosts = Post::where('user_id', Auth::id())->get();
+    return view('home', ['allPosts' => $allPosts, 'userPosts' => $userPosts]);
 });
 
 // Quick CRUD Users

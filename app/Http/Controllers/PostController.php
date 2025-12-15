@@ -12,7 +12,8 @@ class PostController extends Controller
     public function deletePost(Post $post)
     {
         if (Auth::id() === $post['user_id']) {
-            return "<p>deleting post</p>";
+            $post->delete();
+            return redirect('/');
         }
         return "<h1>NO ACCESS</h1>";
     }

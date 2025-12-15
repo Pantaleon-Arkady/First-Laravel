@@ -9,6 +9,11 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
+    public function editPost(Post $post)
+    {
+        return view('edit-post', ['post' => $post]);
+    }
+
     public function createPost(Request $request)
     {
         $dataInput = $request->validate([

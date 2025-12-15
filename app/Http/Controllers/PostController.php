@@ -9,8 +9,19 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
+    public function updatePost(Post $post, Request $request)
+    {
+        if (Auth::id() !== $post['user_id']) {
+            return "<h1>NO ACCESS</h1>";
+        }
+    }
+
     public function editPost(Post $post)
     {
+        if (Auth::id() !== $post['user_id']) {
+            return "<h1>NO ACCESS</h1>";
+        }
+
         return view('edit-post', ['post' => $post]);
     }
 

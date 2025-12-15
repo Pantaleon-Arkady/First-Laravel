@@ -51,3 +51,4 @@ Route::get('/user-logout', [CrudUserController::class, 'userLogout']);
 
 Route::post('/create-post', [PostController::class, 'createPost']);
 Route::get('/edit-post/{post}', [PostController::class, 'editPost']);
+Route::put('/update-post/{post}', [PostController::class, 'updatePost']);

@@ -9,6 +9,14 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
+    public function deletePost(Post $post)
+    {
+        if (Auth::id() === $post['user_id']) {
+            return "<p>deleting post</p>";
+        }
+        return "<h1>NO ACCESS</h1>";
+    }
+
     public function updatePost(Post $post, Request $request)
     {
         if (Auth::id() !== $post['user_id']) {

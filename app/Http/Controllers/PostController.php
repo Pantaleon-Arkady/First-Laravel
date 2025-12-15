@@ -14,6 +14,21 @@ class PostController extends Controller
         if (Auth::id() !== $post['user_id']) {
             return "<h1>NO ACCESS</h1>";
         }
+
+        $dataInput = $request->validate([
+            'title' => 'required',
+            'content' => 'required'
+        ]);
+
+        $dataInput['title'] = strip_tags($dataInput['title']);
+        $dataInput['content'] = strip_tags($dataInput['content']);
+
+        $post->update([
+            'title' => $dataInput['title'],
+            'content' => $dataInput['content']
+        ]);
+
+        return redirect('/');
     }
 
     public function editPost(Post $post)

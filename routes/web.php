@@ -29,15 +29,16 @@ Route::get('/', function () {
 
     $allPosts = Post::all();
     $userPosts = [];
+    $userId = Auth::id();
 
     if (Auth::check()) {
         /* To be fixed */
         // $userPosts = Auth::user()->userPosts()->latest()->get();
         // VSCode reading capability is limited, 
-        $userPosts = Post::where('user_id', Auth::id())->get();
+        $userPosts = Post::where('user_id', $userId)->get();
     }
 
-    return view('home', ['allPosts' => $allPosts, 'userPosts' => $userPosts]);
+    return view('home', ['allPosts' => $allPosts, 'userPosts' => $userPosts, 'userId' => $userId]);
 });
 
 // Quick CRUD Users

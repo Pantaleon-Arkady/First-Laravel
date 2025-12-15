@@ -38,6 +38,16 @@
                     <div class="border border-gray-400 p-4 mt-3">
                         <h4 class="text-l font-semibold mb-2">{{$post['title']}}</h4>
                         <p>~ {{$post['content']}}</p>
+                        @if ($post->user_id == $userId)
+                            <div class="flex flex-row justify-around w-full">
+                                <a class="posts-btn" href="/edit-post/{{$post->id}}">Edit</a>
+                                <form action="/delete-post/{{$post->id}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="posts-btn" type="submit">Delete</button>
+                                </form>
+                            </div> 
+                        @endif
                     </div>
                 @endforeach
             </div>
@@ -47,6 +57,14 @@
                     <div class="border border-gray-400 p-4 mt-3">
                         <h4 class="text-l font-semibold mb-2">{{$post['title']}}</h4>
                         <p>~ {{$post['content']}}</p>
+                        <div class="flex flex-row justify-around w-full">
+                            <a class="posts-btn" href="/edit-post/{{$post->id}}">Edit</a>
+                            <form action="/delete-post/{{$post->id}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="posts-btn" type="submit">Delete</button>
+                            </form>
+                        </div>
                     </div>
                 @endforeach
             </div>

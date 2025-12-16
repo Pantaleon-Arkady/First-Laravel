@@ -11,9 +11,7 @@ Route::get('/laravel-welcome', function () {
     return view('welcome');
 });
 
-Route::get('/home', function () {
-    return view('pages.initial');
-});
+Route::get('/home', [GeneralController::class, 'homePage']);
 
 Route::get('/another-home', function () {
     return view('pages.another');

@@ -11,8 +11,12 @@ Route::get('/laravel-welcome', function () {
     return view('welcome');
 });
 
-Route::get('/initial', function () {
-    return view('initial');
+Route::get('/home', function () {
+    return view('pages.initial');
+});
+
+Route::get('/another-home', function () {
+    return view('pages.another');
 });
 
 Route::get('/about', function () {

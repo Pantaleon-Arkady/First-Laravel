@@ -1,22 +1,6 @@
 <div class="text-center space-y-4">
     <h3 class="text-2xl font-semibold">CRUD Home page</h3>
-    <div class="form-div" id="postForm">
-        <h3 class="text-xl font-semibold mb-3">Create a New Post?</h3>
-
-        <form action="/create-post" method="POST" class="space-y-3">
-            @csrf
-
-            <input type="text" name="title" placeholder="Create a title..."
-                class="input-field"/>
-
-            <textarea name="content" class="input-field" placeholder="Type in what you want to post..." ></textarea>
-
-            <button type="submit"
-                    class="btn-secondary">
-                Create Post
-            </button>
-        </form>
-    </div>
+        @include('partials.auth.forms.create-post')
     <div>
         <button class="posts-btn" onclick="showAllPosts()">All Posts</button>
         <button class="posts-btn" onclick="showMyPosts()">My Posts</button>
